@@ -3,7 +3,7 @@ import React from 'react'
 export default function Pexels() {
     return (
         <div className='flex flex-col w-full justify-center items-center'>
-            <a href="https://www.pexels.com">Photos provided by Pexels</a>
+            <a className='text-white' href="https://www.pexels.com">Photos provided by Pexels</a>
 
             {/* <!-- or show our white logo --> */}
 

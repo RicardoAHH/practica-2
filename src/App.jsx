@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import { Input } from './components/input'
 import { Button } from './components/button'
 import Pexels from './components/pexels'
@@ -10,21 +10,26 @@ import PexelsPhotos from './components/PexelsPhotos'
 
 export default function App() {
 
+  const [search, setSearch] = useState("mountain")
 
   return (
     <>
+
       <div className='w-full h-full bg-gray-900'>
         <Pexels />
-        <Input />
+        <Input
+          search={search}
+          setSearch={setSearch}
+        />
         <div className='flex w-full h-25 items-center justify-center'>
-          <Button contenido="Mountain" color="blue" />
-          <Button contenido="Beaches" color="green" />
-          <Button contenido="Birds" color="red" />
-          <Button contenido="Foods" color="gray" />
+          <Button contenido="Mountain" color="blue" search={search} setSearch={setSearch} />
+          <Button contenido="Beaches" color="green" search={search} setSearch={setSearch} />
+          <Button contenido="Birds" color="red" search={search} setSearch={setSearch} />
+          <Button contenido="Foods" color="gray" search={search} setSearch={setSearch} />
         </div>
-        <div>
+        <div className='Container'>
           {/* <Cards /> */}
-          <PexelsPhotos />
+          <PexelsPhotos search={search} />
         </div>
       </div>
     </>
