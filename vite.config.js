@@ -6,10 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: '/practica-2',
-  optimizeDeps: { include: ['pexels'] },
-  build: {
-    commonjsOptions: { transformMixedEsModules: true }
-  }
+
 
 })
 
