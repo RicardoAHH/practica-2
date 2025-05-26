@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { createClient } from 'pexels'
-const client = createClient('JNmdMAkd4EopN8OnxSkEZ9es3QFQuKsdn9XAWvRRrO3CwVLOIG17pb4c');
+// const client = createClient('JNmdMAkd4EopN8OnxSkEZ9es3QFQuKsdn9XAWvRRrO3CwVLOIG17pb4c');
 
 // Componente para desplegar las fotos
 function PexelsPhotos({ search }) {
