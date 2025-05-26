@@ -7,6 +7,9 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: '/practica-2',
 
+  build: {
+    commonjsOptions: { transformMixedEsModules: true }
+  }
 
 })
 
