@@ -9,7 +9,7 @@ function PexelsPhotos({ search }) {
     const [photos, setPhotos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const client = createClient('JNmdMAkd4EopN8OnxSkEZ9es3QFQuKsdn9XAWvRRrO3CwVLOIG17pb4c');
+
 
     useEffect(() => {
         const fetchPhotos = async () => {
@@ -17,16 +17,26 @@ function PexelsPhotos({ search }) {
             setError(null); // Limpia cualquier error anterior
             //Peticion de las fotos a la api
             try {
-                let response;
-                if (search === "mountain" || search === "Beaches" || search === "Birds" || search === "Foods") {
-                    response = await client.photos.search({ query: search, per_page: 15 });
-                } else {
-                    response = await client.photos.search({ query: search, per_page: 15 });
-                }
+                // let response;
+                // if (search === "mountain" || search === "Beaches" || search === "Birds" || search === "Foods") {
+                //     response = await client.photos.search({ query: search, per_page: 15 });
+                //     console.log(response)
+                // } else {
+                //     response = await client.photos.search({ query: search, per_page: 15 });
+                // }
+
+                const response = await fetch(`https://api.pexels.com/v1/search?query=${search}&per_page=15`, {
+                    headers: {
+                        Authorization: 'VITE_SOME_KEY'
+                    }
+                });
+
+                const data = await response.json()
+                console.log(data.photos)
 
 
-                if (response.photos) {
-                    setPhotos(response.photos);
+                if (data.photos) {
+                    setPhotos(data.photos);
                 } else {
                     setError("No se encontraron fotos o la respuesta no es la esperada.");
                 }
@@ -62,7 +72,7 @@ function PexelsPhotos({ search }) {
 
     return (
         <div>
-            <h1>Fotos de Pexels para "{search}"</h1>
+            <h1 className='text-white'>Fotos de Pexels para "{search}"</h1>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
                 {photos.map(photo => (
                     <div key={photo.id} style={{ border: '1px solid #ddd', padding: '5px' }}>

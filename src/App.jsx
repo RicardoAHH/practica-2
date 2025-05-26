@@ -10,7 +10,7 @@ import PexelsPhotos from './components/PexelsPhotos'
 
 export default function App() {
 
-  const [search, setSearch] = useState("mountain")
+  const [search, setSearch] = useState("nature")
 
   return (
     <>
