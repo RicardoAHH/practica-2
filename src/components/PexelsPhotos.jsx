@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { createClient } from 'pexels'
-const client = createClient('JNmdMAkd4EopN8OnxSkEZ9es3QFQuKsdn9XAWvRRrO3CwVLOIG17pb4c');
+// const client = createClient('JNmdMAkd4EopN8OnxSkEZ9es3QFQuKsdn9XAWvRRrO3CwVLOIG17pb4c');
 
 // Componente para desplegar las fotos
 function PexelsPhotos({ search }) {
@@ -26,11 +26,19 @@ function PexelsPhotos({ search }) {
                 //     response = await client.photos.search({ query: search, per_page: 15 });
                 // }
 
-                const response = await fetch(`https://api.pexels.com/v1/search?query=${search}&per_page=15`, {
-                    headers: {
-                        Authorization: 'VITE_SOME_KEY'
-                    }
-                });
+                // const response = await fetch(`https://api.pexels.com/v1/search?query=${search}&per_page=15`, {
+                //     headers: {
+                //         Authorization: 'VITE_SOME_KEY'
+                //     }
+                // });
+
+                // Llama a tu propia función sin servidor (proxy)
+                const response = await fetch(`/api/search?q=${search}&per_page=15`);
+
+                if (!response.ok) { // Manejar errores HTTP (404, 500, etc.)
+                    const errorText = await response.text();
+                    throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
+                }
 
                 const data = await response.json()
                 console.log(data.photos)
