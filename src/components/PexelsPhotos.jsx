@@ -1,11 +1,8 @@
 
 
 import React, { useEffect, useState } from 'react';
+const VITE_SOME_KEY = import.meta.env.VITE_SOME_KEY;
 
-import { createClient } from 'pexels'
-// const client = createClient('JNmdMAkd4EopN8OnxSkEZ9es3QFQuKsdn9XAWvRRrO3CwVLOIG17pb4c');
-
-// Componente para desplegar las fotos
 function PexelsPhotos({ search }) {
     const [photos, setPhotos] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -18,13 +15,7 @@ function PexelsPhotos({ search }) {
             setError(null); // Limpia cualquier error anterior
             //Peticion de las fotos a la api
             try {
-                // let response;
-                // if (search === "mountain" || search === "Beaches" || search === "Birds" || search === "Foods") {
-                //     response = await client.photos.search({ query: search, per_page: 15 });
-                //     console.log(response)
-                // } else {
-                //     response = await client.photos.search({ query: search, per_page: 15 });
-                // }
+
 
                 const response = await fetch(`https://api.pexels.com/v1/search?query=${search}&per_page=15`, {
                     headers: {
