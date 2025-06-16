@@ -19,7 +19,7 @@ function PexelsPhotos({ search }) {
 
                 const response = await fetch(`https://api.pexels.com/v1/search?query=${search}&per_page=15`, {
                     headers: {
-                        Authorization: 'VITE_SOME_KEY'
+                        Authorization: VITE_SOME_KEY
                     }
                 });
 
